@@ -2,7 +2,7 @@
 
 **A modern, production-grade Go Clean Architecture scaffolding and code generator CLI tool.**
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/ebinskryfon/goclean.svg)](https://pkg.go.dev/github.com/ebinskryfon/goclean)
+[![Go Reference](https://pkg.go.dev/badge/github.com/skryfon-org/goclean.svg)](https://pkg.go.dev/github.com/skryfon-org/goclean)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Website](https://img.shields.io/badge/website-goclean.cloud-22d3ee)](https://www.goclean.cloud)
 
@@ -17,7 +17,7 @@ Bakes in enterprise-tested architecture from real-world Go backend production sy
 Anyone with Go 1.22+ (goclean and generated projects target Go 1.23; Go will fetch that toolchain automatically) installed can install `goclean` globally with one command:
 
 ```bash
-go install github.com/ebinskryfon/goclean@latest
+go install github.com/skryfon-org/goclean@latest
 ```
 
 Ensure your `$(go env GOPATH)/bin` is in your system's `PATH`:
@@ -205,13 +205,7 @@ These need the project templates split into per-router and per-ORM layers, so th
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Contributions, issues and feature requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) for setup and the pull request flow, and the [Code of Conduct](CODE_OF_CONDUCT.md). To report a vulnerability, follow [SECURITY.md](SECURITY.md).
 
 ---
 
@@ -231,7 +225,7 @@ make build   # ./bin/goclean with the version stamped in
 ```
 
 CI (`.github/workflows/ci.yml`) runs format, vet, tests and the smoke test. Pushing a `v*` tag runs GoReleaser
-(`.goreleaser.yaml`) to publish binaries. `go install github.com/ebinskryfon/goclean@vX.Y.Z` reports its
+(`.goreleaser.yaml`) to publish binaries. `go install github.com/skryfon-org/goclean@vX.Y.Z` reports its
 module version automatically.
 
 ---

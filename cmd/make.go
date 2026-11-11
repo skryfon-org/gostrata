@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/ebinskryfon/goclean/pkg/generator"
+	"github.com/skryfon-org/goclean/pkg/generator"
 	"github.com/spf13/cobra"
 )
 

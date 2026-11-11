@@ -9,7 +9,7 @@ builds:
     goos: [linux, darwin, windows]
     goarch: [amd64, arm64]
     ldflags:
-      - -s -w -X github.com/ebinskryfon/goclean/cmd.AppVersion={{.Version}}
+      - -s -w -X github.com/skryfon-org/goclean/cmd.AppVersion={{.Version}}
 
 archives:
   - formats: [tar.gz]

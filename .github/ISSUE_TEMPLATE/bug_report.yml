@@ -1,0 +1,49 @@
+name: Bug report
+description: Something doesn't work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Security issue?** Don't open a public issue. Follow [SECURITY.md](https://github.com/skryfon-org/goclean/blob/main/SECURITY.md) instead.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you see, and what did you expect to see?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Command(s) you ran
+      placeholder: |
+        goclean new shop --db postgres --router chi
+        goclean make:module product
+      render: shell
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: goclean version
+      description: Output of `goclean version`
+    validations:
+      required: true
+  - type: input
+    id: stack
+    attributes:
+      label: Stack
+      description: Database, router and ORM (see `.goclean.json` in the generated project)
+      placeholder: postgres + gin + gorm
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: macOS 15 arm64, Go 1.24
+  - type: textarea
+    id: logs
+    attributes:
+      label: Output
+      description: Full terminal output or `go build` errors. Remove secrets first.
+      render: text

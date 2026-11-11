@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ebinskryfon/goclean/pkg/ui"
+	"github.com/skryfon-org/goclean/pkg/ui"
 	"github.com/spf13/cobra"
 )
 

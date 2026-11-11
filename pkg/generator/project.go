@@ -11,9 +11,9 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/ebinskryfon/goclean/pkg/strutil"
-	"github.com/ebinskryfon/goclean/pkg/ui"
-	"github.com/ebinskryfon/goclean/templates"
+	"github.com/skryfon-org/goclean/pkg/strutil"
+	"github.com/skryfon-org/goclean/pkg/ui"
+	"github.com/skryfon-org/goclean/templates"
 )
 
 // Supported database engines and HTTP routers for generated projects.

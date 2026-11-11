@@ -6,11 +6,11 @@ import (
 	"runtime/debug"
 	"strings"
 
-	"github.com/ebinskryfon/goclean/pkg/ui"
+	"github.com/skryfon-org/goclean/pkg/ui"
 	"github.com/spf13/cobra"
 )
 
-// AppVersion is overridden at build time: -ldflags "-X github.com/ebinskryfon/goclean/cmd.AppVersion=x.y.z".
+// AppVersion is overridden at build time: -ldflags "-X github.com/skryfon-org/goclean/cmd.AppVersion=x.y.z".
 // When unset it falls back to the module version embedded by `go install`.
 var AppVersion = "dev"
 

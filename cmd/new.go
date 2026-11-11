@@ -12,9 +12,9 @@ import (
 	"strings"
 
 	"github.com/charmbracelet/huh"
-	"github.com/ebinskryfon/goclean/pkg/generator"
-	"github.com/ebinskryfon/goclean/pkg/strutil"
-	"github.com/ebinskryfon/goclean/pkg/ui"
+	"github.com/skryfon-org/goclean/pkg/generator"
+	"github.com/skryfon-org/goclean/pkg/strutil"
+	"github.com/skryfon-org/goclean/pkg/ui"
 	"github.com/spf13/cobra"
 )
 

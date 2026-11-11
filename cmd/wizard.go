@@ -4,8 +4,8 @@ import (
 	"os"
 
 	"github.com/charmbracelet/huh"
-	"github.com/ebinskryfon/goclean/pkg/generator"
 	"github.com/mattn/go-isatty"
+	"github.com/skryfon-org/goclean/pkg/generator"
 	"github.com/spf13/cobra"
 )
 

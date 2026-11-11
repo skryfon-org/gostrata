@@ -1,8 +1,8 @@
 # goclean installer for Windows (PowerShell).
-#   irm https://raw.githubusercontent.com/ebinskryfon/goclean/main/install.ps1 | iex
+#   irm https://raw.githubusercontent.com/skryfon-org/goclean/main/install.ps1 | iex
 # Optional: $env:VERSION = "v1.1.1"
 $ErrorActionPreference = "Stop"
-$repo = "ebinskryfon/goclean"
+$repo = "skryfon-org/goclean"
 
 $arch = if ($env:PROCESSOR_ARCHITECTURE -eq "ARM64") { "arm64" } else { "amd64" }
 $version = $env:VERSION

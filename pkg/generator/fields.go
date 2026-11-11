@@ -5,7 +5,7 @@ import (
 	"go/token"
 	"strings"
 
-	"github.com/ebinskryfon/goclean/pkg/strutil"
+	"github.com/skryfon-org/goclean/pkg/strutil"
 )
 
 // Field describes one entity column declared on the command line (e.g. "price:float").

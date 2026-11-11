@@ -1,5 +1,5 @@
 VERSION ?= $(shell git describe --tags --always --dirty 2>/dev/null || echo dev)
-LDFLAGS := -s -w -X github.com/ebinskryfon/goclean/cmd.AppVersion=$(VERSION)
+LDFLAGS := -s -w -X github.com/skryfon-org/goclean/cmd.AppVersion=$(VERSION)
 
 .PHONY: build install test smoke vet lint snapshot clean help
 

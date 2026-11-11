@@ -9,9 +9,11 @@ before reporting an issue to confirm it still reproduces.
 
 Please **do not open a public issue** for security problems.
 
-Report privately using GitHub's
-[private vulnerability reporting](../../security/advisories/new)
-(Security tab → "Report a vulnerability").
+Report privately in one of these ways:
+
+1. **GitHub private vulnerability reporting** (preferred):
+   [Security → Report a vulnerability](https://github.com/skryfon-org/goclean/security/advisories/new)
+2. **Email**: security@skryfon.com
 
 Include, where possible:
 

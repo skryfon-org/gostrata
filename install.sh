@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 # goclean installer for Linux and macOS.
-#   curl -fsSL https://raw.githubusercontent.com/ebinskryfon/goclean/main/install.sh | sh
+#   curl -fsSL https://raw.githubusercontent.com/skryfon-org/goclean/main/install.sh | sh
 # Optional: VERSION=v1.1.1  INSTALL_DIR=/usr/local/bin
 set -eu
 
-REPO="ebinskryfon/goclean"
+REPO="skryfon-org/goclean"
 os=$(uname -s | tr '[:upper:]' '[:lower:]')
 case "$os" in linux|darwin) ;; *) echo "Unsupported OS: $os (use install.ps1 on Windows)" >&2; exit 1 ;; esac
 case "$(uname -m)" in

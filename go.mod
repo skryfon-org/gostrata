@@ -1,4 +1,4 @@
-module github.com/ebinskryfon/goclean
+module github.com/skryfon-org/goclean
 
 go 1.23.0
 
