@@ -3,6 +3,7 @@ package ui
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 // Color codes. They are emptied when output is not a terminal or NO_COLOR is set.
@@ -29,14 +30,33 @@ func init() {
 	}
 }
 
+// Logo is the ASCII art "gostrata" wordmark, one entry per line.
+var Logo = []string{
+	"                    _                 _",
+	"  __ _   ___   ___ | |_  _ __   __ _ | |_   __ _",
+	" / _` | / _ \\ / __|| __|| '__| / _` || __| / _` |",
+	"| (_| || (_) |\\__ \\| |_ | |   | (_| || |_ | (_| |",
+	" \\__, | \\___/ |___/ \\__||_|    \\__,_| \\__| \\__,_|",
+	" |___/",
+}
+
+// LogoBlock returns the colored wordmark followed by the version.
+func LogoBlock(version string) string {
+	var b strings.Builder
+	for i, l := range Logo {
+		b.WriteString(Bold + Cyan + l + Reset)
+		if i == len(Logo)-2 {
+			b.WriteString("  " + Dim + White + "v" + version + Reset)
+		}
+		b.WriteString("\n")
+	}
+	return b.String()
+}
+
 // Banner prints the stylish ASCII art header.
 func Banner(version string) {
 	fmt.Println()
-	fmt.Printf("%s%s  ____      ____ _                  %s\n", Bold, Cyan, Reset)
-	fmt.Printf("%s%s / ___|___ / ___| | ___  __ _ _ __  %s\n", Bold, Cyan, Reset)
-	fmt.Printf("%s%s| |  _/ _ \\ |   | |/ _ \\/ _` | '_ \\ %s\n", Bold, Cyan, Reset)
-	fmt.Printf("%s%s| |_| | (_) | |___| |  __/ (_| | | | |%s\n", Bold, Cyan, Reset)
-	fmt.Printf("%s%s \\____|\\___/ \\____|_|\\___|\\__,_|_| |_|%s  %s%sv%s%s\n", Bold, Cyan, Reset, Dim, White, version, Reset)
+	fmt.Print(LogoBlock(version))
 	fmt.Printf("%s  Go Clean Architecture Scaffolding Tool%s\n", Dim, Reset)
 	fmt.Println()
 }
