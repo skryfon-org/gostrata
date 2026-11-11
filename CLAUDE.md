@@ -17,7 +17,7 @@ make snapshot     # local goreleaser multi-platform build
 go test ./pkg/generator -run TestStackMatrixGeneratesValidGo -v   # single test
 ```
 
-CI (`.github/workflows/ci.yml`) runs gofmt check, vet, race tests and the smoke test. Pushing a `v*` tag triggers GoReleaser and then dispatches a `goclean-release` event to the `skryfon-org/goclean-desktop` repo.
+CI (`.github/workflows/ci.yml`) runs gofmt check, vet, race tests and the smoke test. Pushing a `v*` tag triggers GoReleaser and then dispatches a `goclean-release` event to the `skryfon-org/goclean-website` repo.
 
 ## Architecture
 
