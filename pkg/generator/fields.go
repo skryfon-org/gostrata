@@ -5,7 +5,7 @@ import (
 	"go/token"
 	"strings"
 
-	"github.com/skryfon-org/goclean/pkg/strutil"
+	"github.com/skryfon-org/gostrata/pkg/strutil"
 )
 
 // Field describes one entity column declared on the command line (e.g. "price:float").
@@ -13,7 +13,7 @@ type Field struct {
 	Name    string // raw name as typed
 	Pascal  string // Go field name
 	Snake   string // json key and SQL column
-	Type    string // goclean type keyword
+	Type    string // gostrata type keyword
 	GoType  string
 	PtrType string
 	SQLType string
@@ -88,7 +88,7 @@ func ParseFields(defs []string) ([]Field, error) {
 
 func isGoKeyword(s string) bool { return token.IsKeyword(s) }
 
-// sqlTypeFor maps a goclean field type to a column type for the given database engine.
+// sqlTypeFor maps a gostrata field type to a column type for the given database engine.
 func sqlTypeFor(db, typ string) string {
 	switch typ {
 	case "string":

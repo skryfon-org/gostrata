@@ -6,11 +6,11 @@ import (
 	"runtime/debug"
 	"strings"
 
-	"github.com/skryfon-org/goclean/pkg/ui"
+	"github.com/skryfon-org/gostrata/pkg/ui"
 	"github.com/spf13/cobra"
 )
 
-// AppVersion is overridden at build time: -ldflags "-X github.com/skryfon-org/goclean/cmd.AppVersion=x.y.z".
+// AppVersion is overridden at build time: -ldflags "-X github.com/skryfon-org/gostrata/cmd.AppVersion=x.y.z".
 // When unset it falls back to the module version embedded by `go install`.
 var AppVersion = "dev"
 
@@ -31,8 +31,8 @@ func init() {
 }
 
 var rootCmd = &cobra.Command{
-	Use:   "goclean",
-	Short: "goclean — Modern Go Clean Architecture generator & CLI tool",
+	Use:   "gostrata",
+	Short: "gostrata — Modern Go Clean Architecture generator & CLI tool",
 }
 
 func Execute() {

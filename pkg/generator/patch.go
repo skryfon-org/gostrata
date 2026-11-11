@@ -7,15 +7,18 @@ import (
 	"strings"
 )
 
-// Markers that goclean-created projects carry so modules can be registered automatically.
+// Markers that gostrata-created projects carry so modules can be registered automatically.
 const (
-	markerHandlerFields = "// goclean:handler-fields"
-	markerRepositories  = "// goclean:repositories"
-	markerUsecases      = "// goclean:usecases"
-	markerHandlers      = "// goclean:handlers"
-	markerHandlerInit   = "// goclean:handler-init"
-	markerRoutes        = "// goclean:routes"
+	markerHandlerFields = "// gostrata:handler-fields"
+	markerRepositories  = "// gostrata:repositories"
+	markerUsecases      = "// gostrata:usecases"
+	markerHandlers      = "// gostrata:handlers"
+	markerHandlerInit   = "// gostrata:handler-init"
+	markerRoutes        = "// gostrata:routes"
 )
+
+// legacyName is the tool's name before v1.3.0; its config file and markers are still read.
+const legacyName = "goclean"
 
 type patch struct{ marker, snippet string }
 
@@ -58,6 +61,9 @@ func (r *runner) applyPatches(path, key string, patches []patch) (applied, skipp
 	for _, p := range patches {
 		var ok bool
 		src, ok = insertBeforeMarker(src, p.marker, p.snippet)
+		if !ok { // projects generated before the rename carry "// goclean:*" markers
+			src, ok = insertBeforeMarker(src, strings.Replace(p.marker, "gostrata:", legacyName+":", 1), p.snippet)
+		}
 		if !ok {
 			return false, false, nil
 		}

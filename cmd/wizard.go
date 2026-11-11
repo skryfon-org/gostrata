@@ -5,7 +5,7 @@ import (
 
 	"github.com/charmbracelet/huh"
 	"github.com/mattn/go-isatty"
-	"github.com/skryfon-org/goclean/pkg/generator"
+	"github.com/skryfon-org/gostrata/pkg/generator"
 	"github.com/spf13/cobra"
 )
 

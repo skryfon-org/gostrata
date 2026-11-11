@@ -12,9 +12,9 @@ import (
 	"strings"
 
 	"github.com/charmbracelet/huh"
-	"github.com/skryfon-org/goclean/pkg/generator"
-	"github.com/skryfon-org/goclean/pkg/strutil"
-	"github.com/skryfon-org/goclean/pkg/ui"
+	"github.com/skryfon-org/gostrata/pkg/generator"
+	"github.com/skryfon-org/gostrata/pkg/strutil"
+	"github.com/skryfon-org/gostrata/pkg/ui"
 	"github.com/spf13/cobra"
 )
 
@@ -153,7 +153,7 @@ var newCmd = &cobra.Command{
 		fmt.Printf("    %d. %smake dev%s                     # Start server with live hot-reload\n", step+1, ui.Cyan, ui.Reset)
 		fmt.Println()
 		fmt.Printf("  %sScaffold new features:%s\n", ui.Bold, ui.Reset)
-		fmt.Printf("    %sgoclean make:module <Name> [field:type ...]%s  # Generates and registers a full module\n", ui.Cyan, ui.Reset)
+		fmt.Printf("    %sgostrata make:module <Name> [field:type ...]%s  # Generates and registers a full module\n", ui.Cyan, ui.Reset)
 		fmt.Println()
 		return nil
 	},

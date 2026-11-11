@@ -11,9 +11,9 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/skryfon-org/goclean/pkg/strutil"
-	"github.com/skryfon-org/goclean/pkg/ui"
-	"github.com/skryfon-org/goclean/templates"
+	"github.com/skryfon-org/gostrata/pkg/strutil"
+	"github.com/skryfon-org/gostrata/pkg/ui"
+	"github.com/skryfon-org/gostrata/templates"
 )
 
 // Supported database engines and HTTP routers for generated projects.
@@ -37,14 +37,14 @@ var (
 	SupportedORMs = []string{ORMGorm}
 )
 
-// ProjectConfig is persisted as .goclean.json so later `make:*` commands match the project's stack.
+// ProjectConfig is persisted as .gostrata.json so later `make:*` commands match the project's stack.
 type ProjectConfig struct {
 	Database string `json:"database"`
 	Router   string `json:"router"`
 	ORM      string `json:"orm"`
 }
 
-const projectConfigFile = ".goclean.json"
+const projectConfigFile = ".gostrata.json"
 
 type ProjectOptions struct {
 	ProjectName string

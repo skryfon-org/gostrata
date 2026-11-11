@@ -1,8 +1,8 @@
-# goclean 🚀
+# gostrata 🚀
 
 **A modern, production-grade Go Clean Architecture scaffolding and code generator CLI tool.**
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/skryfon-org/goclean.svg)](https://pkg.go.dev/github.com/skryfon-org/goclean)
+[![Go Reference](https://pkg.go.dev/badge/github.com/skryfon-org/gostrata.svg)](https://pkg.go.dev/github.com/skryfon-org/gostrata)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Website](https://img.shields.io/badge/website-goclean.cloud-22d3ee)](https://www.goclean.cloud)
 
@@ -14,10 +14,10 @@ Bakes in enterprise-tested architecture from real-world Go backend production sy
 
 ## ⚡ Worldwide Installation
 
-Anyone with Go 1.22+ (goclean and generated projects target Go 1.23; Go will fetch that toolchain automatically) installed can install `goclean` globally with one command:
+Anyone with Go 1.22+ (gostrata and generated projects target Go 1.23; Go will fetch that toolchain automatically) installed can install `gostrata` globally with one command:
 
 ```bash
-go install github.com/skryfon-org/goclean@latest
+go install github.com/skryfon-org/gostrata@latest
 ```
 
 Ensure your `$(go env GOPATH)/bin` is in your system's `PATH`:
@@ -33,25 +33,25 @@ export PATH=$PATH:$(go env GOPATH)/bin
 
 ```bash
 # Interactive mode (arrow-key menus for framework and database, prompts for module name)
-goclean new my-saas
+gostrata new my-saas
 
 # Or non-interactive with flags
-goclean new my-saas --module github.com/username/my-saas --db saas_db
+gostrata new my-saas --module github.com/username/my-saas --db saas_db
 
 # Pick the stack (defaults: gin + postgres)
-goclean new my-api --router chi --database sqlite
-goclean new my-shop --router gin --database mysql
+gostrata new my-api --router chi --database sqlite
+gostrata new my-shop --router gin --database mysql
 ```
 
 | Flag | Values | Notes |
 |------|--------|-------|
 | `--router` | `gin` (default), `chi` | chi uses plain `net/http` handlers; request validation uses the same `binding:"..."` tags |
 | `--database` | `postgres` (default), `mysql`, `sqlite` | SQLite is pure Go (no cgo) and skips `docker-compose.yml` |
-| `--orm` | `gorm` (default) | Saved in `.goclean.json`; more ORMs are planned (see Roadmap) |
+| `--orm` | `gorm` (default) | Saved in `.gostrata.json`; more ORMs are planned (see Roadmap) |
 
 In a terminal, any of `--router`, `--database` that you don't pass is asked with an arrow-key menu. Passing the flag skips its question, and piped or CI runs never prompt.
 
-The choice is saved in `.goclean.json`, so `make:*` generators emit matching handlers, routes, SQL types and migrations.
+The choice is saved in `.gostrata.json`, so `make:*` generators emit matching handlers, routes, SQL types and migrations.
 
 This bootstraps a complete Clean Architecture project in seconds:
 - ✅ Scaffolds full Go Clean Architecture (Domain, Usecase, Delivery, Infrastructure)
@@ -70,7 +70,7 @@ Inside your project directory, generate complete Clean Architecture components i
 
 #### Generate a Complete Module (All 7 layers in 1 second)
 ```bash
-goclean make:module Product
+gostrata make:module Product
 ```
 
 This creates:
@@ -86,15 +86,15 @@ This creates:
 
 #### Define fields (`name:type`)
 ```bash
-goclean make:module Product name:string price:float stock:int active:bool
+gostrata make:module Product name:string price:float stock:int active:bool
 ```
 Fields flow into the entity, DTOs (create/update/response), usecase, handler and migration columns.
 Types: `string`, `text`, `int`, `int64`, `float`, `bool`, `time`, `uuid` (default `string`).
 Update requests use pointers, so omitted fields stay unchanged.
 
 #### Auto-registration
-`make:module` patches `container.go` and `routes.go` through the `// goclean:*` marker comments in
-projects created by `goclean new`. It is idempotent. Use `--no-register` to skip it; for older projects
+`make:module` patches `container.go` and `routes.go` through the `// gostrata:*` marker comments in
+projects created by `gostrata new`. It is idempotent. Use `--no-register` to skip it; for older projects
 without markers it prints the manual steps instead.
 
 #### Common flags
@@ -109,35 +109,35 @@ Every run ends with a created / overwritten / skipped summary.
 
 #### Check your environment
 ```bash
-goclean doctor   # verifies Go 1.22+ (1.23+ recommended), git and docker
+gostrata doctor   # verifies Go 1.22+ (1.23+ recommended), git and docker
 ```
 
 #### Granular Generators
 ```bash
 # Generate only an Entity
-goclean make:entity Order
+gostrata make:entity Order
 
 # Generate Request, Input, and Response DTO types
-goclean make:types Order
+gostrata make:types Order
 
 # Generate Repository interface + GORM implementation
-goclean make:repo Order
+gostrata make:repo Order
 
 # Generate Usecase interface + implementation
-goclean make:usecase Order
+gostrata make:usecase Order
 
 # Generate Gin HTTP Handler
-goclean make:handler Order
+gostrata make:handler Order
 
 # Generate SQL migration files (up/down)
-goclean make:migration Order
+gostrata make:migration Order
 ```
 
 ---
 
 ## 📁 Architecture Overview
 
-Every project generated by `goclean` follows strict **Clean Architecture (Dependency Inversion)**:
+Every project generated by `gostrata` follows strict **Clean Architecture (Dependency Inversion)**:
 
 ```
 ├── cmd/
@@ -221,11 +221,11 @@ MIT License.
 ```bash
 make test    # unit tests
 make smoke   # scaffold a project, add a module, go build (needs network)
-make build   # ./bin/goclean with the version stamped in
+make build   # ./bin/gostrata with the version stamped in
 ```
 
 CI (`.github/workflows/ci.yml`) runs format, vet, tests and the smoke test. Pushing a `v*` tag runs GoReleaser
-(`.goreleaser.yaml`) to publish binaries. `go install github.com/skryfon-org/goclean@vX.Y.Z` reports its
+(`.goreleaser.yaml`) to publish binaries. `go install github.com/skryfon-org/gostrata@vX.Y.Z` reports its
 module version automatically.
 
 ---
@@ -233,6 +233,6 @@ module version automatically.
 ## 📚 Learn more
 
 - [Quick Start](https://www.goclean.cloud/docs/quick-start/): create your first project in minutes
-- [Project Structure](https://www.goclean.cloud/docs/project-structure/): what goclean generates and why
+- [Project Structure](https://www.goclean.cloud/docs/project-structure/): what gostrata generates and why
 - [Available Commands](https://www.goclean.cloud/docs/available-commands/): every command and flag
 - [Troubleshooting](https://www.goclean.cloud/docs/troubleshooting/): common problems and fixes

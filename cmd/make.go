@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/skryfon-org/goclean/pkg/generator"
+	"github.com/skryfon-org/gostrata/pkg/generator"
 	"github.com/spf13/cobra"
 )
 
@@ -15,7 +15,7 @@ var makeModuleCmd = &cobra.Command{
 	Short:   "Generate an entire Clean Architecture module (Entity, Repo, Usecase, Handler, Migration)",
 	Args:    cobra.MinimumNArgs(1),
 	Long:    fieldHelp("Generate every layer of a feature (entity, DTOs, repository, usecase, handler, migration)\nand register it in container.go and routes.go."),
-	Example: "  goclean make:module Product name:string price:float stock:int active:bool",
+	Example: "  gostrata make:module Product name:string price:float stock:int active:bool",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		cwd, err := os.Getwd()
 		if err != nil {

@@ -20,22 +20,22 @@ type AppContainer struct {
 	// Handlers
 	HealthHandler *handlers.HealthHandler
 	UserHandler   *handlers.UserHandler
-	// goclean:handler-fields
+	// gostrata:handler-fields
 }
 
 func New(cfg *config.Config, db *gorm.DB, sqlDB *sql.DB, log zerolog.Logger) (*AppContainer, error) {
 	// Repositories
 	userRepo := persistence.NewUserRepository(db)
-	// goclean:repositories
+	// gostrata:repositories
 
 	// Usecases
 	userUsecase := usecaseimpl.NewUserUsecase(userRepo)
-	// goclean:usecases
+	// gostrata:usecases
 
 	// Handlers
 	healthHandler := handlers.NewHealthHandler(sqlDB)
 	userHandler := handlers.NewUserHandler(userUsecase)
-	// goclean:handlers
+	// gostrata:handlers
 
 	return &AppContainer{
 		Config:        cfg,
@@ -43,6 +43,6 @@ func New(cfg *config.Config, db *gorm.DB, sqlDB *sql.DB, log zerolog.Logger) (*A
 		DB:            db,
 		HealthHandler: healthHandler,
 		UserHandler:   userHandler,
-		// goclean:handler-init
+		// gostrata:handler-init
 	}, nil
 }

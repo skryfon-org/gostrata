@@ -1,4 +1,4 @@
-module github.com/skryfon-org/goclean
+module github.com/skryfon-org/gostrata
 
 go 1.23.0
 

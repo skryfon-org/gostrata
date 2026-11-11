@@ -164,10 +164,10 @@ func assertGoParses(t *testing.T, root string) {
 }
 
 // TestSmokeBuild scaffolds a project, adds a module with fields and compiles everything.
-// It needs network access (go mod tidy), so it only runs when GOCLEAN_SMOKE=1 (set in CI).
+// It needs network access (go mod tidy), so it only runs when GOSTRATA_SMOKE=1 (set in CI).
 func TestSmokeBuild(t *testing.T) {
-	if os.Getenv("GOCLEAN_SMOKE") != "1" {
-		t.Skip("set GOCLEAN_SMOKE=1 to run the scaffold-and-build smoke test")
+	if os.Getenv("GOSTRATA_SMOKE") != "1" {
+		t.Skip("set GOSTRATA_SMOKE=1 to run the scaffold-and-build smoke test")
 	}
 	for _, db := range SupportedDatabases {
 		for _, router := range SupportedRouters {
@@ -210,8 +210,8 @@ func TestStackMatrixGeneratesValidGo(t *testing.T) {
 					}
 					return string(b)
 				}
-				if got := read(".goclean.json"); !strings.Contains(got, db) || !strings.Contains(got, router) {
-					t.Errorf(".goclean.json = %s", got)
+				if got := read(".gostrata.json"); !strings.Contains(got, db) || !strings.Contains(got, router) {
+					t.Errorf(".gostrata.json = %s", got)
 				}
 				_, composeErr := os.Stat(filepath.Join(dir, "docker-compose.yml"))
 				if (db == DBSQLite) != os.IsNotExist(composeErr) {

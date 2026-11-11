@@ -1,9 +1,9 @@
-# Contributing to goclean
+# Contributing to gostrata
 
 Thanks for helping. Everyone who takes part agrees to follow the
 [Code of Conduct](CODE_OF_CONDUCT.md).
 
-- **Bugs and ideas**: open an [issue](https://github.com/skryfon-org/goclean/issues/new/choose).
+- **Bugs and ideas**: open an [issue](https://github.com/skryfon-org/gostrata/issues/new/choose).
 - **Security issues**: never open a public issue. See [SECURITY.md](SECURITY.md).
 - **Bigger changes** (a new router, database or ORM, a new command, a change to the
   generated project layout): open an issue first so we can agree on scope before you
@@ -16,8 +16,8 @@ Issues labelled `good first issue` are a good place to start.
 You need Go (the version in `go.mod` or newer) and `make`.
 
 ```bash
-git clone https://github.com/<you>/goclean && cd goclean
-make build   # ./bin/goclean
+git clone https://github.com/<you>/gostrata && cd gostrata
+make build   # ./bin/gostrata
 make lint    # gofmt check
 make vet
 make test    # unit tests with the race detector
@@ -29,7 +29,7 @@ Run one test with `go test ./pkg/generator -run TestStackMatrixGeneratesValidGo 
 ## How the code is laid out
 
 - `cmd/`: Cobra commands and the interactive wizard.
-- `templates/project/`: the files `goclean new` generates. Every file is rendered with
+- `templates/project/`: the files `gostrata new` generates. Every file is rendered with
   `text/template`; router and database variants are `{{if}}` branches inside one file.
 - `templates/stubs/`: per-entity templates used by the `make:*` commands.
 - `pkg/generator/`: all generation logic. Every generated `.go` file is run through
@@ -38,7 +38,7 @@ Run one test with `go test ./pkg/generator -run TestStackMatrixGeneratesValidGo 
 Two things are easy to break:
 
 - **Marker comments.** `make:module` registers new modules by inserting code above the
-  `// goclean:*` comments in the generated `container.go` and `routes.go`. If you rename
+  `// gostrata:*` comments in the generated `container.go` and `routes.go`. If you rename
   or remove a marker in the templates, update `pkg/generator/patch.go` too.
 - **The stack matrix.** `TestStackMatrixGeneratesValidGo` generates a project and a
   module for every database and router combination. A template change must work for

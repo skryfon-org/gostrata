@@ -8,8 +8,8 @@ import (
 
 var versionCmd = &cobra.Command{
 	Use:   "version",
-	Short: "Print the goclean CLI version",
+	Short: "Print the gostrata CLI version",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Printf("goclean version %s\n", AppVersion)
+		fmt.Printf("gostrata version %s\n", AppVersion)
 	},
 }

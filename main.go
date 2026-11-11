@@ -1,6 +1,6 @@
 package main
 
-import "github.com/skryfon-org/goclean/cmd"
+import "github.com/skryfon-org/gostrata/cmd"
 
 func main() {
 	cmd.Execute()

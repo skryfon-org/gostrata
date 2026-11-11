@@ -128,3 +128,27 @@ func TestMigrationsAreSequential(t *testing.T) {
 		t.Errorf("expected 000002 migration: %v", err)
 	}
 }
+
+// Projects generated before the rename keep working: old config file and old markers.
+func TestLegacyGocleanProject(t *testing.T) {
+	dir := t.TempDir()
+	if err := os.WriteFile(filepath.Join(dir, ".goclean.json"), []byte(`{"database":"sqlite","router":"chi","orm":"gorm"}`), 0644); err != nil {
+		t.Fatal(err)
+	}
+	if cfg := loadProjectConfig(dir); cfg.Database != DBSQLite || cfg.Router != RouterChi {
+		t.Fatalf("legacy config not read: %+v", cfg)
+	}
+
+	file := filepath.Join(dir, "routes.go")
+	if err := os.WriteFile(file, []byte("package x\n\nfunc f() {\n\t// goclean:routes\n}\n"), 0644); err != nil {
+		t.Fatal(err)
+	}
+	r := &runner{}
+	applied, _, err := r.applyPatches(file, "g()", []patch{{markerRoutes, "g()"}})
+	if err != nil || !applied {
+		t.Fatalf("legacy marker not patched: applied=%v err=%v", applied, err)
+	}
+	if got, _ := os.ReadFile(file); !strings.Contains(string(got), "g()") {
+		t.Fatalf("snippet missing:\n%s", got)
+	}
+}

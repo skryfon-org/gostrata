@@ -1,15 +1,15 @@
 version: 2
-project_name: goclean
+project_name: gostrata
 
 builds:
   - main: .
-    binary: goclean
+    binary: gostrata
     env:
       - CGO_ENABLED=0
     goos: [linux, darwin, windows]
     goarch: [amd64, arm64]
     ldflags:
-      - -s -w -X github.com/skryfon-org/goclean/cmd.AppVersion={{.Version}}
+      - -s -w -X github.com/skryfon-org/gostrata/cmd.AppVersion={{.Version}}
 
 archives:
   - formats: [tar.gz]

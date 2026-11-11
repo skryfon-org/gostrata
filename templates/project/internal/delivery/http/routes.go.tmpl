@@ -31,7 +31,7 @@ func SetupRouter(cfg *config.Config, log zerolog.Logger, c *container.AppContain
 			r.Get("/{id}", c.UserHandler.GetByID)
 		})
 
-		// goclean:routes
+		// gostrata:routes
 	})
 
 	return r
@@ -73,7 +73,7 @@ func SetupRouter(cfg *config.Config, log zerolog.Logger, c *container.AppContain
 			users.GET("/:id", c.UserHandler.GetByID)
 		}
 
-		// goclean:routes
+		// gostrata:routes
 	}
 
 	return r

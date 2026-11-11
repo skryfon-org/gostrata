@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/skryfon-org/goclean/pkg/ui"
+	"github.com/skryfon-org/gostrata/pkg/ui"
 	"github.com/spf13/cobra"
 )
 
@@ -19,10 +19,10 @@ var doctorCmd = &cobra.Command{
 	Short: "Check that Go, git and docker are installed and recent enough",
 	Args:  cobra.NoArgs,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		ui.Header("goclean doctor")
+		ui.Header("gostrata doctor")
 		failed := false
 
-		// Go (required, >= 1.22; 1.23+ recommended since goclean itself needs 1.23)
+		// Go (required, >= 1.22; 1.23+ recommended since gostrata itself needs 1.23)
 		if out, err := run("go", "version"); err != nil {
 			ui.Error("go: not found in PATH (required)")
 			failed = true
@@ -34,14 +34,14 @@ var doctorCmd = &cobra.Command{
 			if major > 1 || minor >= 23 {
 				ui.Success("go: %s", out)
 			} else if minor == 22 {
-				ui.Warn("go: %s (works, but goclean and generated projects need Go 1.23 and Go will auto-download that toolchain)", out)
+				ui.Warn("go: %s (works, but gostrata and generated projects need Go 1.23 and Go will auto-download that toolchain)", out)
 			} else {
 				ui.Error("go: %s (Go 1.22+ required, 1.23+ recommended)", out)
 				failed = true
 			}
 		}
 
-		// git (needed for `goclean new` repo init)
+		// git (needed for `gostrata new` repo init)
 		if out, err := run("git", "--version"); err != nil {
 			ui.Warn("git: not found (new projects won't get a repository; use --no-git to silence)")
 		} else {
