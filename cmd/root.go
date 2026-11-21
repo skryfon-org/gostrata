@@ -46,14 +46,9 @@ func init() {
 	rootCmd.Version = AppVersion
 	rootCmd.PersistentFlags().BoolVar(&flagForce, "force", false, "overwrite existing files")
 	rootCmd.PersistentFlags().BoolVar(&flagDryRun, "dry-run", false, "show what would be generated without writing anything")
-	rootCmd.Long = fmt.Sprintf(`%s%s  ____      ____ _                  
- / ___|___ / ___| | ___  __ _ _ __  
-| |  _/ _ \ |   | |/ _ \/ _`+"`"+` | '_ \ 
-| |_| | (_) | |___| |  __/ (_| | | | |
- \____|\___/ \____|_|\___|\__,_|_| |_|  v%s%s
-
+	rootCmd.Long = ui.LogoBlock(AppVersion) + `
 Go Clean Architecture Scaffolding & Code Generation Tool.
-Quickly bootstrap production-ready Go projects and scaffold Clean Architecture modules.`, ui.Bold, ui.Cyan, AppVersion, ui.Reset)
+Quickly bootstrap production-ready Go projects and scaffold Clean Architecture modules.`
 	rootCmd.SilenceUsage = true
 	rootCmd.SilenceErrors = true
 	rootCmd.AddCommand(versionCmd)
